@@ -1,17 +1,19 @@
 import {Container} from './components/Container/Container';
 import {Header} from "./components/Header/Header.jsx";
-export  const App = () => {
+import {Navigation} from "./components/Navigation/Navigation.jsx";
+import {Catalog} from "./components/Catalog/Catalog.jsx";
+import {Footer} from "./components/Footer/Footer.jsx";
 
-  return (
-    <>
-      <Header/>
-      <main>
-        <nav>
-            <Container className="navigation__container"/>
-        </nav>
-        <section></section>
-      </main>
-      <footer></footer>
-    </>
-  )
+export const App = () => {
+
+    return (
+        <>
+            <Header/>
+            <main>
+                <Navigation/>
+                <Catalog/>
+            </main>
+            <Footer/>
+        </>
+    )
 }
