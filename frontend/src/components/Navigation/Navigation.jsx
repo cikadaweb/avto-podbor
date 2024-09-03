@@ -1,13 +1,15 @@
-import style from './Navigation.module.css';
-import {Container} from "../Container/Container.jsx";
-import classNames from "classnames";
 import {useDispatch, useSelector} from "react-redux";
 import {categoryRequestAsync, changeCategory} from "../../store/category/categorySlice.js";
 import {useEffect} from "react";
 import {API_URI} from "../../const.js";
 
-export const Navigation = () => {
+import Typography from '@mui/material/Typography';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
+import Box from '@mui/material/Box';
+import {BaseImage} from "../UI/BaseImage/BaseImage.jsx";
 
+export const Navigation = () => {
     const {category, activeCategory} = useSelector((state) => state.category)
     const dispatch = useDispatch();
 
@@ -15,28 +17,30 @@ export const Navigation = () => {
         dispatch(categoryRequestAsync());
     }, []);
 
+    const handleChange = (event, newCategory) => {
+        const index = category.map(cat => cat.title).indexOf(newCategory);
+        dispatch(changeCategory({indexCategory: index}))
+    };
+
     return (
-        <nav className={style.navigation}>
-            <Container className={style.container}>
-                <ul className={style.list}>
-                    {category.map((item, idx) =>
-                        <li key={item.title} className={style.item}>
-                            <button
-                                className={classNames(style.button,
-                                    activeCategory === idx ? style.button_active : ''
-                                )}
-                                style={{backgroundImage: `url(${API_URI}/${item.image})`}}
-                                onClick={() => {
-                                    dispatch(changeCategory({
-                                        indexCategory: idx
-                                    }))
-                                }}
-                            >{item.rus}
-                            </button>
-                        </li>
-                    )}
-                </ul>
-            </Container>
-        </nav>
+        <ToggleButtonGroup
+            sx={{display: 'flex'}}
+            color="primary"
+            value={category[activeCategory]?.title}
+            exclusive
+            onChange={handleChange}
+            aria-label="Platform"
+        >
+            {category.map((cat) =>
+                <ToggleButton value={cat.title} key={cat.title} sx={{flex: '1 0 auto'}}>
+                    <Box>
+                        <Typography variant="body1" gutterBottom>
+                            {cat.rus}
+                        </Typography>
+                        <BaseImage path={`${API_URI}/${cat.image}`} width={20} height={10}/>
+                    </Box>
+                </ToggleButton>
+            )}
+        </ToggleButtonGroup>
     );
 };
