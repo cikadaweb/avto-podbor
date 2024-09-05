@@ -9,6 +9,8 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Box from '@mui/material/Box';
 import {BaseImage} from "../UI/BaseImage/BaseImage.jsx";
 
+import './Navigation.css';
+
 export const Navigation = () => {
     const {category, activeCategory} = useSelector((state) => state.category)
     const dispatch = useDispatch();
@@ -37,7 +39,8 @@ export const Navigation = () => {
                         <Typography variant="body1" gutterBottom>
                             {cat.rus}
                         </Typography>
-                        <BaseImage path={`${API_URI}/${cat.image}`} width={20} height={10}/>
+                        <Box className="image" sx={{backgroundImage: `url(${API_URI}/${cat.image})`}}>
+                        </Box>
                     </Box>
                 </ToggleButton>
             )}
