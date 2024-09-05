@@ -4,7 +4,7 @@ import {API_URI, POSTFIX} from "../../const.js";
 const initialState = {
     category: [],
     error: '',
-    activeCategory: 4,
+    activeCategory: 0,
 };
 
 export const categoryRequestAsync = createAsyncThunk(
@@ -18,9 +18,6 @@ const categorySlice = createSlice({
     initialState,
     reducers: {
         changeCategory(state, action) {
-            console.log('state: ', state);
-            console.log('action: ', action);
-
             state.activeCategory = action.payload.indexCategory;
         },
     },
