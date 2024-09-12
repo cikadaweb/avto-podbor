@@ -1,36 +1,32 @@
-import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {API_URI, POSTFIX} from "../../const";
+import {createSlice, PayloadAction} from "@reduxjs/toolkit";
+import {ICategory, ICategoryState} from "../../types/category";
+import {fetchCategories} from "./categoryActionCreators";
 
-const initialState = {
+const initialState: ICategoryState = {
     category: [],
+    isLoading: false,
     error: '',
     activeCategory: 0,
 };
-
-export const categoryRequestAsync = createAsyncThunk(
-    'category/fetch',() => fetch(`${API_URI}${POSTFIX}/category`)
-        .then(req => req.json())
-        .catch(error => ({error}))
-)
 
 const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {
-        changeCategory(state, action) {
+        changeCategory(state, action: PayloadAction<number>) {
             state.activeCategory = action.payload.indexCategory;
         },
     },
     extraReducers: builder => {
         builder
-            .addCase(categoryRequestAsync.pending, state => {
+            .addCase(fetchCategories.pending, state => {
                 state.error = '';
             })
-            .addCase(categoryRequestAsync.fulfilled, (state, action) => {
+            .addCase(fetchCategories.fulfilled, (state, action: PayloadAction<ICategory[]>) => {
                 state.error = '';
                 state.category = action.payload;
             })
-            .addCase(categoryRequestAsync.rejected, (state, action) => {
+            .addCase(fetchCategories.rejected, (state, action: PayloadAction<string>) => {
                 state.error = action.payload.error;
             })
     }

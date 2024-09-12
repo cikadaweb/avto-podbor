@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {categoryRequestAsync, changeCategory} from "../../store/category/categorySlice";
+import {changeCategory} from "../../store/category/categorySlice";
 import {useEffect} from "react";
 import {API_URI} from "../../const";
 
@@ -10,14 +10,15 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 import './Navigation.css';
-import {useAppSelector} from "../../hooks/redux";
+import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {fetchCategories} from "../../store/category/categoryActionCreators";
 
 export const Navigation = () => {
     const {category, activeCategory} = useAppSelector((state) => state.category)
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        dispatch(categoryRequestAsync());
+        dispatch(fetchCategories());
     }, []);
 
     const handleChange = (event, newCategory) => {
