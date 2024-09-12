@@ -1,20 +1,17 @@
-import {useState} from "react";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import {Provider} from "react-redux";
 
 import Container from '@mui/material/Container';
 import {ModelInfoPage} from "./pages/ModelInfoPage/ModelInfoPage.jsx";
 import {MainPage} from "./pages/MainPage/MainPage.jsx";
-import TheHeader from "./components/Header/Header.jsx";
-import {Footer} from "./components/Footer/Footer.jsx";
-import {ModalDelivery} from "./components/ModalDelivery/ModalDelivery.jsx";
+import TheHeader from "./components/Header/Header";
 
-import {store} from "./store/index.js";
+import {setupStore} from "./store";
 
 
 export const App = () => {
     return (
-        <Provider store={store}>
+        <Provider store={setupStore}>
             <BrowserRouter>
                 <TheHeader />
 
@@ -29,8 +26,6 @@ export const App = () => {
                         </Routes>
                     </Container>
                 </main>
-                {/*<Footer/>*/}
-                {/*<ModalDelivery/>*/}
             </BrowserRouter>
         </Provider>
     )

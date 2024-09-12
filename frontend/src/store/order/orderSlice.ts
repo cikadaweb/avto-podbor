@@ -1,6 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {API_URI, POSTFIX} from "../../const.js";
-import {calcTotal} from "../../utils/calcTotal.js";
+import {API_URI, POSTFIX} from "../../const";
+import {calcTotal} from "../../utils/calcTotal";
 
 const initialState = {
     orderList: JSON.parse(localStorage.getItem('order') || '[]'),

@@ -1,8 +1,10 @@
-import classNames from 'classnames';
-import style from './ModalDelivery.module.css';
 import {useDispatch, useSelector} from "react-redux";
-import {closeModal} from "../../store/modaDelivery/modalDeliverySlice.js";
-import {submitForm, updateFormValue} from "../../store/form/formSlice.js";
+
+import classNames from 'classnames';
+
+import style from './ModalDelivery.module.css';
+import {closeModal} from "../../store/modaDelivery/modalDeliverySlice";
+import {submitForm, updateFormValue} from "../../store/form/formSlice";
 
 export const ModalDelivery = () => {
   const { isOpen } = useSelector(state => state.modal);

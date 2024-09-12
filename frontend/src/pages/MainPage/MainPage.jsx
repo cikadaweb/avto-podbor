@@ -1,9 +1,9 @@
 import Grid from '@mui/material/Grid';
 import Box from "@mui/material/Box";
 
-import {Navigation} from "../../components/Navigation/Navigation.jsx";
-import {Catalog} from "../../components/Catalog/Catalog.jsx";
-import {CatalogFilters} from "../../components/CatalogFilters/CatalogFilters.jsx";
+import {Navigation} from "../../components/Navigation/Navigation.tsx";
+import {Catalog} from "../../components/Catalog/Catalog.tsx";
+import {CatalogFilters} from "../../components/CatalogFilters/CatalogFilters.tsx";
 
 export const MainPage = () => {
 

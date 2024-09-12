@@ -1,9 +1,10 @@
-import style from './Order.module.css';
-import {OrderGoods} from "../OrderGoods/OrderGoods.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {orderRequestAsync} from "../../store/order/orderSlice.js";
-import {openModal} from "../../store/modaDelivery/modalDeliverySlice.js";
+
+import style from './Order.module.css';
+import {OrderGoods} from "../OrderGoods/OrderGoods";
+import {orderRequestAsync} from "../../store/order/orderSlice";
+import {openModal} from "../../store/modaDelivery/modalDeliverySlice";
 
 export const Order = () => {
 

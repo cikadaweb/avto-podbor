@@ -1,7 +1,7 @@
-import {useDispatch, useSelector} from "react-redux";
-import {categoryRequestAsync, changeCategory} from "../../store/category/categorySlice.js";
+import {useDispatch} from "react-redux";
+import {categoryRequestAsync, changeCategory} from "../../store/category/categorySlice";
 import {useEffect} from "react";
-import {API_URI} from "../../const.js";
+import {API_URI} from "../../const";
 
 import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -10,9 +10,10 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 import './Navigation.css';
+import {useAppSelector} from "../../hooks/redux";
 
 export const Navigation = () => {
-    const {category, activeCategory} = useSelector((state) => state.category)
+    const {category, activeCategory} = useAppSelector((state) => state.category)
     const dispatch = useDispatch();
 
     useEffect(() => {

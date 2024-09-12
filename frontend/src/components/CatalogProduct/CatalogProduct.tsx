@@ -1,7 +1,9 @@
-import style from './CatalogProduct.module.css';
-import {API_URI} from "../../const.js";
 import {useDispatch} from "react-redux";
-import {addProduct} from "../../store/order/orderSlice.js";
+
+import style from './CatalogProduct.module.css';
+import {API_URI} from "../../const";
+
+import {addProduct} from "../../store/order/orderSlice";
 
 export const CatalogProduct = ({item}) => {
 

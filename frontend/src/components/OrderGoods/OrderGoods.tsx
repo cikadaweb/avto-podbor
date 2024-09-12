@@ -1,6 +1,7 @@
 import style from './OrderGoods.module.css';
-import {Count} from "../Count/Count.jsx";
-import {API_URI} from "../../const.js";
+
+import {Count} from "../Count/Count";
+import {API_URI} from "../../const";
 
 export const OrderGoods = ({title, price, image, count, id, weight}) => (
     <li className={style.item}>

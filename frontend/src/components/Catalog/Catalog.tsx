@@ -13,9 +13,9 @@ import {
 import Typography from "@mui/material/Typography";
 import Grid from '@mui/material/Grid';
 
-import {API_URI} from "../../const.js";
-import {BaseImage} from "../UI/BaseImage/BaseImage.jsx";
-import {productRequestAsync} from "../../store/product/productSlice.js";
+import {API_URI} from "../../const";
+import {BaseImage} from "../UI/BaseImage/BaseImage";
+import {productRequestAsync} from "../../store/product/productSlice";
 
 export const Catalog = () => {
     const { products } = useSelector(state => state.product);
