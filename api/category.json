@@ -3,5 +3,6 @@
   { "title": "audi", "rus": "Ауди", "image": "img/audi.png" },
   { "title": "renault", "rus": "Рено", "image": "img/renault.png" },
   { "title": "kia", "rus": "Киа", "image": "img/kia.png" },
-  { "title": "skoda", "rus": "Шкода", "image": "img/skoda.png" }
+  { "title": "skoda", "rus": "Шкода", "image": "img/skoda.png" },
+  { "title": "chevrolet", "rus": "Шевроле", "image": "img/chevrolet.png" }
 ]
