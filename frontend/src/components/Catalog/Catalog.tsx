@@ -1,5 +1,5 @@
 import {useEffect} from "react";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 
 import {Link} from "react-router-dom";
 
@@ -11,15 +11,16 @@ import {
     CardContent,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 
 import {API_URI} from "../../const";
 import {BaseImage} from "../UI/BaseImage/BaseImage";
 import {productRequestAsync} from "../../store/product/productSlice";
+import {useTypedSelector} from "../../hooks/redux";
 
 export const Catalog = () => {
-    const { products } = useSelector(state => state.product);
-    const { category, activeCategory } = useSelector(state => state.category);
+    const { products } = useTypedSelector(state => state.product);
+    const { category, activeCategory } = useTypedSelector(state => state.category);
 
     const dispatch = useDispatch();
 
@@ -36,7 +37,7 @@ export const Catalog = () => {
                     {products.length ? (
                         <>
                             {products.map((product) => (
-                                <Grid item xs={4} key={product.id}>
+                                <Grid size={4} key={product.id}>
                                     <Card>
                                         <CardContent>
                                             <BaseImage path={`${API_URI}/${product.image}`} width={120} height={80}/>

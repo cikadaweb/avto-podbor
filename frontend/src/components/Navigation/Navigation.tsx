@@ -1,4 +1,3 @@
-import {useDispatch} from "react-redux";
 import {changeCategory} from "../../store/category/categorySlice";
 import {useEffect} from "react";
 import {API_URI} from "../../const";
@@ -10,12 +9,12 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
 import './Navigation.css';
-import {useAppDispatch, useAppSelector} from "../../hooks/redux";
+import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
 import {fetchCategories} from "../../store/category/categoryActionCreators";
 
 export const Navigation = () => {
-    const {category, activeCategory} = useAppSelector((state) => state.category)
-    const dispatch = useAppDispatch();
+    const {category, activeCategory} = useTypedSelector((state) => state.category)
+    const dispatch = useTypedDispatch();
 
     useEffect(() => {
         dispatch(fetchCategories());
@@ -23,7 +22,7 @@ export const Navigation = () => {
 
     const handleChange = (event, newCategory) => {
         const index = category.map(cat => cat.title).indexOf(newCategory);
-        dispatch(changeCategory({indexCategory: index}))
+        dispatch(changeCategory(index));
     };
 
     return (
