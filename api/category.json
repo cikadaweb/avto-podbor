@@ -4,5 +4,9 @@
   { "title": "renault", "rus": "Рено", "image": "img/renault.png" },
   { "title": "kia", "rus": "Киа", "image": "img/kia.png" },
   { "title": "skoda", "rus": "Шкода", "image": "img/skoda.png" },
-  { "title": "chevrolet", "rus": "Шевроле", "image": "img/chevrolet.png" }
+  { "title": "chevrolet", "rus": "Шевроле", "image": "img/chevrolet.png" },
+  { "title": "nissan", "rus": "Ниссан", "image": "img/nissan.png" },
+  { "title": "datsun", "rus": "Датсун", "image": "img/datsun.png" },
+  { "title": "lada", "rus": "Лада", "image": "img/lada.png" },
+  { "title": "ford", "rus": "Форд", "image": "img/ford.png" }
 ]
