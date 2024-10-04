@@ -1,6 +1,8 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {API_URI, POSTFIX} from "../../const";
+
 import axios from "axios";
+
+import {API_URI, POSTFIX} from "../../const";
 import {ICategory} from "../../types/category";
 
 export const fetchCategories = createAsyncThunk(

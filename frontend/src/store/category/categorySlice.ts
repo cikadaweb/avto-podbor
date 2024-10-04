@@ -1,6 +1,13 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {ICategory, ICategoryState} from "../../types/category";
-import {fetchCategories} from "./categoryActionCreators";
+import {ICategory} from "../../types/category";
+import {fetchCategories} from "./categoryAsyncActions";
+
+export interface ICategoryState {
+    category: ICategory[];
+    isLoading: boolean;
+    error: string;
+    activeCategory: number;
+}
 
 const initialState: ICategoryState = {
     category: [],
@@ -13,8 +20,8 @@ const categorySlice = createSlice({
     name: 'category',
     initialState,
     reducers: {
-        changeCategory(state, action: PayloadAction<number>) {
-            state.activeCategory = action.payload.indexCategory;
+        changeCategory(state, action: PayloadAction<ICategoryState['activeCategory']>) {
+            state.activeCategory = action.payload;
         },
     },
     extraReducers: builder => {
@@ -27,7 +34,7 @@ const categorySlice = createSlice({
                 state.category = action.payload;
             })
             .addCase(fetchCategories.rejected, (state, action: PayloadAction<string>) => {
-                state.error = action.payload.error;
+                state.error = action.payload;
             })
     }
 });
