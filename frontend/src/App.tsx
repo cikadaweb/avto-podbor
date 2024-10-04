@@ -2,16 +2,16 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import {Provider} from "react-redux";
 
 import Container from '@mui/material/Container';
-import {ModelInfoPage} from "./pages/ModelInfoPage/ModelInfoPage.jsx";
-import {MainPage} from "./pages/MainPage/MainPage.jsx";
+import {ModelInfoPage} from "./pages/ModelInfoPage/ModelInfoPage";
+import {MainPage} from "./pages/MainPage/MainPage";
 import TheHeader from "./components/Header/Header";
 
-import {setupStore} from "./store";
+import {store} from "./store";
 
 
 export const App = () => {
     return (
-        <Provider store={setupStore}>
+        <Provider store={store}>
             <BrowserRouter>
                 <TheHeader />
 
