@@ -1,6 +1,6 @@
-import {changeCategory} from "../../store/category/categorySlice";
 import {useEffect} from "react";
-import {API_URI} from "../../const";
+
+import './Navigation.css';
 
 import Typography from '@mui/material/Typography';
 import ToggleButton from '@mui/material/ToggleButton';
@@ -8,9 +8,10 @@ import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 
-import './Navigation.css';
+import {changeCategory} from "../../store/category/categorySlice";
+import {API_URI} from "../../const";
 import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
-import {fetchCategories} from "../../store/category/categoryActionCreators";
+import {fetchCategories} from "../../store/category/categoryAsyncActions";
 
 export const Navigation = () => {
     const {category, activeCategory} = useTypedSelector((state) => state.category)
@@ -29,7 +30,7 @@ export const Navigation = () => {
         <Box sx={{ flexGrow: 1 }}>
             <Paper>
                 <ToggleButtonGroup
-                    sx={{display: 'flex'}}
+                    sx={{display: 'flex', overflowX: 'auto'}}
                     color="primary"
                     value={category[activeCategory]?.title}
                     exclusive
@@ -42,8 +43,7 @@ export const Navigation = () => {
                                 <Typography variant="body1" gutterBottom>
                                     {cat.rus}
                                 </Typography>
-                                <Box className="image" sx={{backgroundImage: `url(${API_URI}/${cat.image})`}}>
-                                </Box>
+                                <Box className="image" sx={{backgroundImage: `url(${API_URI}/${cat.image})`}}></Box>
                             </Box>
                         </ToggleButton>
                     )}
