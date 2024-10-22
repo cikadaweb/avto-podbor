@@ -8,25 +8,25 @@ import {
     Button,
     Card,
     CardActions,
-    CardContent,
+    CardContent, Chip, Stack,
 } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import Grid from '@mui/material/Grid2';
 
 import {API_URI} from "../../const";
 import {BaseImage} from "../UI/BaseImage/BaseImage";
-import {productRequestAsync} from "../../store/product/productSlice";
 import {useTypedSelector} from "../../hooks/redux";
+import {fetchCars} from "../../store/cars/carsAsyncActions";
 
 export const Catalog = () => {
-    const { products } = useTypedSelector(state => state.product);
+    const { cars } = useTypedSelector(state => state.cars);
     const { category, activeCategory } = useTypedSelector(state => state.category);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
         if(category.length) {
-            dispatch(productRequestAsync(category[activeCategory]?.title));
+            dispatch(fetchCars(category[activeCategory]?.title));
         }
     }, [category, activeCategory]);
 
@@ -34,19 +34,27 @@ export const Catalog = () => {
         <>
             <Box sx={{padding: '20px 0'}}>
                 <Grid container spacing={2}>
-                    {products.length ? (
+                    {cars.length ? (
                         <>
-                            {products.map((product) => (
-                                <Grid size={4} key={product.id}>
+                            {cars.map((car) => (
+                                <Grid size={4} key={car.id}>
                                     <Card>
                                         <CardContent>
-                                            <BaseImage path={`${API_URI}/${product.image}`} width={120} height={80}/>
-                                            <Typography sx={{padding: '8px 0'}} variant="h5" component="div">{product.title}</Typography>
+                                            <BaseImage path={`${API_URI}/${car.image}`} width={120} height={80}/>
+                                            <Typography sx={{padding: '8px 0'}} variant="h5" component="div">{car.title}</Typography>
                                         </CardContent>
                                         <CardActions>
-                                            <Grid container justifyContent="space-between">
-                                                <Grid item>
-                                                    <Link to={`/model/${product.title}`}><Button variant="contained" size="small">Подробнее</Button></Link>
+                                            <Grid container direction="column" justifyContent="space-between" spacing={2}>
+                                                <Grid>
+                                                    <Stack direction="row" spacing={1}>
+                                                        <Chip label={`Поколение ${car.generation}`} />
+                                                        {car.restyle && (
+                                                            <Chip label="Рестайлинг" />
+                                                        )}
+                                                    </Stack>
+                                                </Grid>
+                                                <Grid>
+                                                    <Link to={`/model/${car.title}`}><Button variant="contained" size="small">Подробнее</Button></Link>
                                                 </Grid>
                                             </Grid>
                                         </CardActions>
@@ -56,7 +64,7 @@ export const Catalog = () => {
                         </>
                     )
                         : (
-                            <Grid item xs={12} sx={{display: 'flex', justifyContent: 'center', padding: '20px'}}>
+                            <Grid size={12} sx={{display: 'flex', justifyContent: 'center', padding: '20px'}}>
                                 <Typography variant="body1">По данной марке нет автомобилей</Typography>
                             </Grid>
                         )
