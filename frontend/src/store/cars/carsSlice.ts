@@ -3,7 +3,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {ICarItem} from "../../types/cars";
 import {fetchCars} from "./carsAsyncActions";
 
-interface ICarsState {
+export interface ICarsState {
     cars: ICarItem [];
     error: string;
 };
