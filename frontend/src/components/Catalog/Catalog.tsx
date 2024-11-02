@@ -15,14 +15,14 @@ import Grid from '@mui/material/Grid2';
 
 import {API_URI} from "../../const";
 import {BaseImage} from "../UI/BaseImage/BaseImage";
-import {useTypedSelector} from "../../hooks/redux";
+import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
 import {fetchCars} from "../../store/cars/carsAsyncActions";
 
 export const Catalog = () => {
     const { cars } = useTypedSelector(state => state.cars);
     const { category, activeCategory } = useTypedSelector(state => state.category);
 
-    const dispatch = useDispatch();
+    const dispatch = useTypedDispatch();
 
     useEffect(() => {
         if(category.length) {
