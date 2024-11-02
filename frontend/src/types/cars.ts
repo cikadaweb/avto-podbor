@@ -7,4 +7,5 @@ export interface ICarItem   {
     description: string;
     category: string;
     image: string;
+    restyle?: boolean;
 }
