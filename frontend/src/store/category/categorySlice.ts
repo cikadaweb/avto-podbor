@@ -5,7 +5,7 @@ import {fetchCategories} from "./categoryAsyncActions";
 export interface ICategoryState {
     category: ICategory[];
     isLoading: boolean;
-    error: string;
+    error: string | undefined;
     activeCategory: number;
 }
 
@@ -33,7 +33,7 @@ const categorySlice = createSlice({
                 state.error = '';
                 state.category = action.payload;
             })
-            .addCase(fetchCategories.rejected, (state, action: PayloadAction<string>) => {
+            .addCase(fetchCategories.rejected, (state, action: PayloadAction<string | undefined>) => {
                 state.error = action.payload;
             })
     }

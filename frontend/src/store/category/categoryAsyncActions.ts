@@ -5,13 +5,13 @@ import axios from "axios";
 import {API_URI, POSTFIX} from "../../const";
 import {ICategory} from "../../types/category";
 
-export const fetchCategories = createAsyncThunk(
+export const fetchCategories = createAsyncThunk<ICategory[], undefined, { rejectValue: string }>(
     'category/fetch',
-    async (_, thunkAPI) => {
+    async (_, { rejectWithValue }) => {
         try {
             const response = await axios.get<ICategory[]>(`${API_URI}${POSTFIX}/category`);
             return response.data
         } catch (err) {
-            return thunkAPI.rejectWithValue('Не удалось выполнить запрос!')
+            return rejectWithValue('Не удалось выполнить запрос!')
         }
     })
