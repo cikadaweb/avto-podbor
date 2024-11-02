@@ -5,7 +5,7 @@ import {fetchCars} from "./carsAsyncActions";
 
 export interface ICarsState {
     cars: ICarItem [];
-    error: string;
+    error: string | undefined;
 };
 
 const initialState: ICarsState = {
@@ -27,7 +27,7 @@ const carsSlice = createSlice({
                 state.cars = action.payload;
             })
             .addCase(fetchCars.rejected, (state, action) => {
-                state.error = action.payload.error;
+                state.error = action.payload;
             })
     }
 });
