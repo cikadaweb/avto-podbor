@@ -21,9 +21,11 @@ export const Navigation = () => {
         dispatch(fetchCategories());
     }, []);
 
-    const handleChange = (event, newCategory) => {
-        const index = category.map(cat => cat.title).indexOf(newCategory);
-        dispatch(changeCategory(index));
+    const handleChange = (event: React.MouseEvent<HTMLElement>, newCategory: string | null) => {
+        if(newCategory) {
+            const index = category.map(cat => cat.title).indexOf(newCategory);
+            dispatch(changeCategory(index));
+        }
     };
 
     return (
