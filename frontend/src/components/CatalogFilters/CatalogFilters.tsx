@@ -13,13 +13,11 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Grid from '@mui/material/Grid2';
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import ToggleButton from "@mui/material/ToggleButton";
-import {API_URI} from "../../const";
 
 interface ITransmissionItem {
     id: string,
     title: string
-}
+};
 
 export const CatalogFilters = () => {
 
