@@ -1,0 +1,42 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: space-between;
+    background-color: #ebebeb;
+    padding: 16px;
+}
+
+.body {
+    flex: 1 0 auto;
+    justify-content: space-between;
+    background-image: url("../../../assets/img/chat-background.jpg");
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+    overflow-y: scroll;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+}
+
+.footer {
+    padding: 16px;
+}
+
+.form {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
