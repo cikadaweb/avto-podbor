@@ -1,27 +1,52 @@
+import {useEffect, useState} from "react";
+
 import {Avatar, FormControl, TextField} from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import {AttachFile, InsertEmoticon, MoreVert, SearchOutlined} from "@mui/icons-material";
 import SendIcon from '@mui/icons-material/Send';
 
+import Pusher from 'pusher-js'
+
 import style from './ChatMain.module.css';
 import MessageItem from "../MessageItem/MessageItem";
 import {IChatMessage} from "../types";
+import {ApiMessages} from "../../../api";
 
 const ChatMain = () => {
-    const mockMessagesList: IChatMessage[] = [
-        {
-            id: 1,
-            chat_id: 1,
-            author: 'Bob',
-            text: 'Hello, my friend!'
-        },
-        {
-            id: 2,
-            chat_id: 1,
-            author: 'Jorj',
-            text: 'Hi there :)'
-        },
-    ]
+
+    const [messages, setMessages] = useState<IChatMessage[]>([]);
+
+    useEffect(() => {
+        const pusher = new Pusher(import.meta.env.VITE_PUSHER_API_KEY, {
+            cluster: 'eu'
+        });
+        const channel = pusher.subscribe('messages');
+        channel.bind('inserted', (data: IChatMessage) => {setMessages([...messages, data])
+        });
+        return () => {
+            channel.unbind_all()
+            channel.unsubscribe()
+        }
+    }, [messages]);
+
+    useEffect(() => {
+        fetchMessages();
+    }, []);
+
+    const pushNotification = () => {
+        console.log('pushNotification');
+    };
+
+    const fetchMessages = async () => {
+        try {
+            const response = await ApiMessages.getSub<IChatMessage[]>('sync', pushNotification);
+            if (response) {
+                setMessages(response.data);
+            }
+        } catch (error) {
+            console.error('Error fetching messages:', error);
+        }
+    };
 
   return (
       <div className={style.main}>
@@ -41,8 +66,8 @@ const ChatMain = () => {
           </div>
           <div className={style.body}>
               <div className={style.messages}>
-                  {mockMessagesList.map((message: IChatMessage) => (
-                      <MessageItem message={message} key={message.id}/>
+                  {messages.map((message: IChatMessage) => (
+                      <MessageItem message={message} key={message.name}/>
                   ))}
               </div>
           </div>
