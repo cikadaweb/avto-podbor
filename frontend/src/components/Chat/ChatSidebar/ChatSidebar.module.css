@@ -1,0 +1,14 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-right: 1px solid #D3D3D3FF;
+}
+
+.header {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: space-between;
+    background-color: #ebebeb;
+    padding: 16px;
+}

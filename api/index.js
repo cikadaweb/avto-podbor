@@ -10,7 +10,7 @@ const CATEGORY_FILE =
 // номер порта, на котором будет запущен сервер
 const PORT = process.env.PORT || 3024;
 // префикс URI для всех методов приложения
-const URI_PREFIX = "/api/product";
+const URI_PREFIX = "/api/cars";
 
 class ApiError extends Error {
   constructor(statusCode, data) {

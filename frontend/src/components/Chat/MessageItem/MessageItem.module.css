@@ -1,0 +1,16 @@
+.message {
+    width: fit-content;
+    background-color: #ffffff;
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+.message_receive {
+    background-color: #dcf8c6;
+    margin-left: auto;
+}
+
+.author {
+    font-size: 18px;
+    font-weight: 500;
+}
