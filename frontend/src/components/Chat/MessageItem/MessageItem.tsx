@@ -10,18 +10,18 @@ interface IMessageItemProps {
 };
 
 const MessageItem = ({message}: IMessageItemProps) => {
-    const [currentUser, setCurrentUser] = useState('Bob');
+    const [currentUser, setCurrentUser] = useState('Temp');
 
     const className = classNames(
         style.message,
-        message.author === currentUser && style.message_receive
+        message.name === currentUser && style.message_receive
     );
 
   return (
       <p className={className}>
-          <span className={style.author}>{message.author}</span>
-          <div className={style.text}>{message.text}</div>
-          <span className={style.timestamp}>{new Date().toISOString()}</span>
+          <span className={style.author}>{message.name}</span>
+          <div className={style.text}>{message.message}</div>
+          <span className={style.timestamp}>{new Date(message.timestamp).toISOString()}</span>
       </p>
   );
 };
