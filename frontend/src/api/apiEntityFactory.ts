@@ -1,5 +1,5 @@
 import {ApiRequestManager} from './apiRequestManager';
-import {IMessageType} from '../types/notification';
+import {INotificationType} from '../types/notification';
 
 import {AxiosResponse} from 'axios';
 
@@ -12,7 +12,7 @@ export const ApiEntityFactory = (entityName: string) => {
     const get = async <T>(
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void,
         entityId?: string,
@@ -38,7 +38,7 @@ export const ApiEntityFactory = (entityName: string) => {
         subEntityName: string,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void,
         query?: Record<string, any>
@@ -65,7 +65,7 @@ export const ApiEntityFactory = (entityName: string) => {
         subEntityID: string,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void,
         query?: Record<string, any>
@@ -88,7 +88,7 @@ export const ApiEntityFactory = (entityName: string) => {
         subEntityName: string,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void,
         query?: Record<string, any>
@@ -112,7 +112,7 @@ export const ApiEntityFactory = (entityName: string) => {
         entitySubID: string,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void,
         query?: Record<string, any>
@@ -133,7 +133,7 @@ export const ApiEntityFactory = (entityName: string) => {
         data: Record<string, any> | string[] | number[],
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void
     ): Promise<AxiosResponse<any, any>> => {
@@ -153,7 +153,7 @@ export const ApiEntityFactory = (entityName: string) => {
         data: Record<string, any>,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void
     ): Promise<AxiosResponse<T> | undefined> => {
@@ -172,7 +172,7 @@ export const ApiEntityFactory = (entityName: string) => {
         data: Record<string, any>,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void
     ): Promise<AxiosResponse<T> | undefined> => {
@@ -193,7 +193,7 @@ export const ApiEntityFactory = (entityName: string) => {
         data: Record<string, any>,
         errorHandler: (
             message: string,
-            type: IMessageType,
+            type: INotificationType,
             showTime?: number
         ) => void
     ): Promise<AxiosResponse<T> | undefined> => {
