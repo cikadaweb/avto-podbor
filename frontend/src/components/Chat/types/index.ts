@@ -1,6 +1,7 @@
 export interface IChatMessage {
     id: number;
-    chat_id: number;
-    author: string;
-    text: string;
+    name: string;
+    message: string;
+    received: boolean;
+    timestamp: Date;
 };
