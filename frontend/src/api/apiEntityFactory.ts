@@ -47,13 +47,13 @@ export const ApiEntityFactory = (entityName: string) => {
         try {
             return await getEntity<T>(subEntityUrl, '', query);
         } catch (error: any) {
-            if (subEntityName === 'get_info') {
-                errorHandler('Вы не авторизованы', 'error');
-            } else {
+            if (error.response) {
                 errorHandler(
                     error.response.data.message ?? 'Ошибка со стороны сервера',
                     'error'
                 );
+            } else {
+                errorHandler('Ошибка со стороны сервера', 'error');
             }
             throw error;
         }
