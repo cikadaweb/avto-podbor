@@ -1,4 +1,6 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
+
+import userReducer from "./user/userSlice";
 import categoryReducer from "./category/categorySlice";
 import carsReducer from "./cars/carsSlice";
 import orderReducer, {localStorageMiddleware} from "./order/orderSlice";
@@ -6,6 +8,7 @@ import modalReducer from "./modaDelivery/modalDeliverySlice"
 import formReducer from "./form/formSlice"
 
 const rootReducer = combineReducers({
+    user: userReducer,
     category: categoryReducer,
     cars: carsReducer,
     order: orderReducer,
