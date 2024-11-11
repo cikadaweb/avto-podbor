@@ -1,5 +1,4 @@
 import {useEffect} from "react";
-import {useDispatch} from "react-redux";
 
 import {Link} from "react-router-dom";
 
@@ -19,10 +18,10 @@ import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
 import {fetchCars} from "../../store/cars/carsAsyncActions";
 
 export const Catalog = () => {
+    const dispatch = useTypedDispatch();
+
     const { cars } = useTypedSelector(state => state.cars);
     const { category, activeCategory } = useTypedSelector(state => state.category);
-
-    const dispatch = useTypedDispatch();
 
     useEffect(() => {
         if(category.length) {
