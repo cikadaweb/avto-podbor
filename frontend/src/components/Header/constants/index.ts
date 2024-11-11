@@ -15,6 +15,11 @@ export const appbarMenuLinks: appbarMenuLink[] = [
         link: '/favourites'
     },
     {
+        name: 'chat',
+        title: 'Сообщения',
+        link: '/chat/1'
+    },
+    {
         name: 'logout',
         title: 'Выйти',
         link: '/logout'
