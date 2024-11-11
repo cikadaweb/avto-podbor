@@ -4,7 +4,7 @@ import { store } from "./store";
 
 import RootPage from "./pages/RootPage/RootPage";
 
-export const App = () => {
+const App = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
@@ -13,3 +13,5 @@ export const App = () => {
         </Provider>
     );
 };
+
+export default App;
