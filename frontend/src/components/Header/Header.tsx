@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,6 +13,7 @@ import {Avatar, Menu, MenuItem, Tooltip} from "@mui/material";
 import {appbarMenuLinks} from "./constants";
 
 const TheHeader = () => {
+    const navigate = useNavigate();
 
     const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -20,6 +23,17 @@ const TheHeader = () => {
 
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
+    };
+
+    const handleMenuClick = (link: string) => {
+        if (link === '/logout') {
+            localStorage.setItem('auth', JSON.stringify(false));
+            handleCloseUserMenu();
+            navigate('/login');
+        } else {
+            navigate(link);
+            handleCloseUserMenu();
+        }
     };
 
     return (
@@ -75,11 +89,8 @@ const TheHeader = () => {
                             onClose={handleCloseUserMenu}
                         >
                             {appbarMenuLinks.map((link) => (
-                                <MenuItem key={link.name} onClick={handleCloseUserMenu}>
-                                    <Typography sx={{ textAlign: 'center' }}>{}</Typography>
-                                    <Link to={`${link.link}`}>
-                                        <Typography sx={{ textAlign: 'center' }}>{link.title}</Typography>
-                                    </Link>
+                                <MenuItem key={link.name} onClick={() => handleMenuClick(link.link)}>
+                                    <Typography sx={{ textAlign: 'center' }}>{link.title}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>
