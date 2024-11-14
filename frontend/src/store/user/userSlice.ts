@@ -12,7 +12,7 @@ export interface IUserState {
 
 const initialState: IUserState = {
     user: null,
-    isAuthenticated: false,
+    isAuthenticated: JSON.parse(localStorage.getItem('auth') || 'false'),
     authError: '',
     userError: ''
 };
@@ -29,6 +29,7 @@ const userSlice = createSlice({
             .addCase(loginUser.fulfilled, (state, action: PayloadAction<{ token: string }>) => {
                 state.authError = '';
                 state.isAuthenticated = true;
+                localStorage.setItem('auth', JSON.stringify(true));
             })
             .addCase(loginUser.rejected, (state, action: PayloadAction<string | undefined>) => {
                 state.authError = action.payload;
