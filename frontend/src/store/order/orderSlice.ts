@@ -1,6 +1,5 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 import {API_URI, POSTFIX} from "../../const";
-import {calcTotal} from "../../utils/calcTotal";
 
 const initialState = {
     orderList: JSON.parse(localStorage.getItem('order') || '[]'),
@@ -9,6 +8,13 @@ const initialState = {
     totalCount: 0,
     error: [],
 }
+
+const calcTotal = orderGoods =>
+    orderGoods.reduce(([totalCount, totalPrice], item) => {
+        const sumCount = totalCount + item.count;
+        const sumPrice = totalPrice + item.price * item.count;
+        return [sumCount, sumPrice];
+    }, [0, 0]);
 
 export const localStorageMiddleware = store => next => action => {
     const nextAction = next(action);
