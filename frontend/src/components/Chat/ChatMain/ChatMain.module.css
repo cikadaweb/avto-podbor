@@ -15,6 +15,7 @@
 
 .body {
     flex: 1 0 auto;
+    max-height: 65vh;
     justify-content: space-between;
     background-image: url("../../../assets/img/chat-background.jpg");
     background-repeat: repeat;
@@ -25,6 +26,7 @@
 
 .messages {
     display: flex;
+    height: 100vh;
     flex-direction: column;
     gap: 16px;
     padding: 16px;
