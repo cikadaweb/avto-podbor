@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import style from './MessageItem.module.css';
 import {IChatMessage} from "../types";
-import {getLocaleDateTime} from "../../../helpers/DateFormatHelper";
+import {formatTime} from "../../../helpers/DateFormatHelper";
 
 interface IMessageItemProps {
     message: IChatMessage,
@@ -22,7 +22,7 @@ const MessageItem = ({message}: IMessageItemProps) => {
       <p className={className}>
           <span className={style.author}>{message.name}</span>
           <div className={style.text}>{message.message}</div>
-          <span className={style.timestamp}>{getLocaleDateTime(message.timestamp)}</span>
+          <span className={style.timestamp}>{formatTime(message.timestamp)}</span>
       </p>
   );
 };
