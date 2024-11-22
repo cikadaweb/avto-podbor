@@ -3,5 +3,5 @@ export interface IChatMessage {
     name: string;
     message: string;
     received: boolean;
-    timestamp: Date;
+    timestamp: string;
 };
