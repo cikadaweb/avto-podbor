@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid2';
 import Box from "@mui/material/Box";
 
 import {Navigation} from "../../components/Navigation/Navigation";
-import {Catalog} from "../../components/Catalog/Catalog";
+import {CarsCatalog} from "../../components/Catalog/CarsCatalog/CarsCatalog";
 import {CatalogFilters} from "../../components/CatalogFilters/CatalogFilters";
 import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
 import {Navigate} from "react-router-dom";
@@ -26,7 +26,7 @@ const MainPage = () => {
                         <CatalogFilters/>
                     </Grid>
                     <Grid size={8}>
-                        <Catalog/>
+                        <CarsCatalog/>
                     </Grid>
                 </Grid>
             </Box>
