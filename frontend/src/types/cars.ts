@@ -2,6 +2,7 @@ export interface ICarItem   {
     id: number;
     title: string;
     price: number;
+    year: number;
     generation: number;
     mileage: number;
     description: string;
