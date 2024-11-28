@@ -4,12 +4,10 @@ import Box from "@mui/material/Box";
 import {Navigation} from "../../components/Navigation/Navigation";
 import {CarsCatalog} from "../../components/Catalog/CarsCatalog/CarsCatalog";
 import {CatalogFilters} from "../../components/CatalogFilters/CatalogFilters";
-import {useTypedDispatch, useTypedSelector} from "../../hooks/redux";
+import {useTypedSelector} from "../../hooks/redux";
 import {Navigate} from "react-router-dom";
 
 const MainPage = () => {
-    const dispatch = useTypedDispatch();
-
     const { isAuthenticated } = useTypedSelector(state => state.user);
 
     if(!isAuthenticated) {
