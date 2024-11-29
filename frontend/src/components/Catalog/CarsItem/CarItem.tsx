@@ -10,6 +10,7 @@ import {
 } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import FlagIcon from '@mui/icons-material/Flag';
+import PrecisionManufacturingIcon from '@mui/icons-material/PrecisionManufacturing';
 import Grid from '@mui/material/Grid2';
 
 import { BaseImage } from '../../UI/BaseImage/BaseImage';
@@ -60,6 +61,23 @@ const CarItem = ({ car }: ICarItemProps) => {
               </Grid>
 
               <Grid container direction="column" size={12}>
+                <Grid container justifyContent="space-between">
+                  <Grid>
+                    <Typography variant="body2" component="span">
+                      Год производства: .............
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    <Chip
+                      label={car.year}
+                      size="small"
+                      onClick={() => {}}
+                      onDelete={() => {}}
+                      deleteIcon={<PrecisionManufacturingIcon />}
+                    />
+                  </Grid>
+                </Grid>
+
                 <Grid
                   container
                   justifyContent="space-between"
@@ -81,6 +99,19 @@ const CarItem = ({ car }: ICarItemProps) => {
                       onDelete={() => {}}
                       deleteIcon={<FlagIcon />}
                     />
+                  </Grid>
+                </Grid>
+
+                <Grid container justifyContent="space-between">
+                  <Grid>
+                    <Typography variant="body2" component="span">
+                      Поколение: ....
+                    </Typography>
+                  </Grid>
+                  <Grid>
+                    <Typography variant="subtitle1" component="span">
+                      {car.generation}
+                    </Typography>
                   </Grid>
                 </Grid>
 
