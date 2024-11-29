@@ -281,6 +281,17 @@
     "description": "Этот автомобиль зарекомендовал себя как надежный и практичный выбор для водителей...",
     "category": "skoda",
     "image": "img/skoda-octavia-2-restyle.jpeg"
+  },
+  {
+    "id": "26",
+    "title": "Renault Logan",
+    "price": 1200000,
+    "generation": 2,
+    "mileage": 30000,
+    "year": 2021,
+    "description": "Этот автомобиль зарекомендовал себя как надежный и практичный выбор для водителей...",
+    "category": "renault",
+    "image": "img/renault-logan-2.jpg"
   }
 ]
 
